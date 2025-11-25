@@ -33,13 +33,14 @@ src/
 
 ## Scripts disponibles
 
-| Comando        | Descripción                                                        |
-| -------------- | ------------------------------------------------------------------ |
-| `pnpm dev`     | Levanta el servidor de desarrollo con HMR (http://localhost:5173). |
-| `pnpm build`   | Compila TypeScript y genera la build optimizada en `dist/`.        |
-| `pnpm preview` | Sirve la build resultante para validación previa a producción.     |
-| `pnpm lint`    | Ejecuta ESLint sobre todo el proyecto.                             |
-| `pnpm test`    | Corre la suite de Vitest en modo watch/CI según el entorno.        |
+| Comando              | Descripción                                                        |
+| -------------------- | ------------------------------------------------------------------ |
+| `pnpm dev`           | Levanta el servidor de desarrollo con HMR (http://localhost:5173). |
+| `pnpm build`         | Compila TypeScript y genera la build optimizada en `dist/`.        |
+| `pnpm preview`       | Sirve la build resultante para validación previa a producción.     |
+| `pnpm lint`          | Ejecuta ESLint sobre todo el proyecto.                             |
+| `pnpm test`          | Corre la suite de Vitest en modo watch/CI según el entorno.        |
+| `pnpm test:coverage` | Corre la suite de Vitest y genera el reporte de cobertura.         |
 
 ## Pruebas y cobertura
 

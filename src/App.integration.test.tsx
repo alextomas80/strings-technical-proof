@@ -19,41 +19,41 @@ const addStringThroughModal = (text: string) => {
 const getDeleteButton = () => screen.getByText("DELETE") as HTMLButtonElement;
 const getRestoreButton = () => screen.getByTestId("restore-button") as HTMLButtonElement;
 
-describe("Flujos completos de la aplicación", () => {
+describe("Complete flows of the application", () => {
   beforeEach(() => {
     resetStore();
   });
 
-  test("permite crear un string desde el modal y visualizarlo en la lista", () => {
+  test("allows creating a string from the modal and displaying it in the list", () => {
     render(<App />);
 
-    addStringThroughModal("Nuevo elemento");
+    addStringThroughModal("Buenos días");
 
-    expect(screen.getByText("Nuevo elemento")).toBeInTheDocument();
+    expect(screen.getByText("Buenos días")).toBeInTheDocument();
   });
 
-  test("permite seleccionar, eliminar y restaurar un string", () => {
+  test("allows selecting, deleting and restoring a string", () => {
     render(<App />);
 
-    addStringThroughModal("Elemento a eliminar");
+    addStringThroughModal("Buenos días");
 
-    const listItem = screen.getByText("Elemento a eliminar");
+    const listItem = screen.getByText("Buenos días");
     fireEvent.click(listItem);
 
     const deleteButton = screen.getByText("DELETE") as HTMLButtonElement;
     expect(deleteButton.disabled).toBe(false);
     fireEvent.click(deleteButton);
 
-    expect(screen.queryByText("Elemento a eliminar")).not.toBeInTheDocument();
+    expect(screen.queryByText("Buenos días")).not.toBeInTheDocument();
 
     const restoreButton = screen.getByTestId("restore-button") as HTMLButtonElement;
     expect(restoreButton.disabled).toBe(false);
     fireEvent.click(restoreButton);
 
-    expect(screen.getByText("Elemento a eliminar")).toBeInTheDocument();
+    expect(screen.getByText("Buenos días")).toBeInTheDocument();
   });
 
-  test("permite eliminar y restaurar múltiples strings manteniendo el estado de los botones", () => {
+  test("allows deleting and restoring multiple strings while maintaining the state of the buttons", () => {
     render(<App />);
 
     addStringThroughModal("Elemento 1");
@@ -79,7 +79,7 @@ describe("Flujos completos de la aplicación", () => {
     expect(getRestoreButton().disabled).toBe(true);
   });
 
-  test("añade un string con la tecla Enter y evita valores vacíos", () => {
+  test("adds a string with the Enter key and prevents empty values", () => {
     render(<App />);
 
     fireEvent.click(screen.getByText("ADD"));
@@ -99,21 +99,20 @@ describe("Flujos completos de la aplicación", () => {
     expect(screen.getByText("Nuevo con Enter")).toBeInTheDocument();
   });
 
-  test("cancela la creación y limpia el valor del input al reabrir el modal", () => {
+  test("cancels the creation and clears the input value when the modal is reopened", () => {
     render(<App />);
 
     fireEvent.click(screen.getByText("ADD"));
 
     let input = screen.getByPlaceholderText("Type the text here...") as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "Temporal" } });
+    fireEvent.change(input, { target: { value: "Temporal string" } });
 
     fireEvent.click(screen.getByText("Cancel"));
     expect(screen.queryByTestId("modal-add")).not.toBeInTheDocument();
-    expect(screen.queryByText("Temporal")).not.toBeInTheDocument();
+    expect(screen.queryByText("Temporal string")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByText("ADD"));
     input = screen.getByPlaceholderText("Type the text here...") as HTMLInputElement;
     expect(input.value).toBe("");
   });
 });
-
