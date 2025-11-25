@@ -1,0 +1,27 @@
+@use "@/styles/colors";
+
+.custom-button {
+  background-color: colors.$primary;
+  border-radius: 50px;
+  border: 1px solid colors.$primary;
+  color: colors.$white;
+  height: 49px;
+  min-height: 49px;
+  min-width: 138px;
+  opacity: 1;
+  padding: 0 30px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &--outline {
+    background-color: colors.$white;
+    border: 1px solid colors.$primary;
+    color: colors.$primary;
+    min-width: initial;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}

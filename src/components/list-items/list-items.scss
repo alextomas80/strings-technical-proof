@@ -1,0 +1,11 @@
+@use "@/styles/colors";
+
+.list-items {
+  background-color: colors.$gray-light;
+  border: 1px solid colors.$gray-border;
+  flex: 1;
+  margin: 35px 0 30px;
+  min-height: 227px;
+  overflow-y: auto;
+  padding: 13px 11px;
+}

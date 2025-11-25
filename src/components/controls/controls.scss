@@ -1,0 +1,10 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  &__group {
+    display: flex;
+    gap: 1rem;
+  }
+}
